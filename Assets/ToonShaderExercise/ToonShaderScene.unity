@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lightDirection: {fileID: 1372072887}
-  _toonMaterial: {fileID: 2100000, guid: c84f9ca2fea4b48f7a64f56a65edede8, type: 2}
+  _toonMaterial: {fileID: 2100000, guid: 3fe859cfe278ef14ba042d7688518d78, type: 2}
 --- !u!4 &116508780
 Transform:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 116508778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.584816, y: -56.631104, z: 23.590092}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -371,13 +371,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372072886}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.42014423, y: -0.097903036, z: 0.045652516, w: -0.9010048}
+  m_LocalRotation: {x: -0.11193905, y: 0.49394852, z: -0.16146252, w: 0.84700316}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -347.597, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.726, y: 60.844, z: -22.599}
 --- !u!1001 &1654840165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -387,12 +387,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -426,10 +438,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c84f9ca2fea4b48f7a64f56a65edede8, type: 2}
+      objectReference: {fileID: 2100000, guid: 3fe859cfe278ef14ba042d7688518d78, type: 2}
     - target: {fileID: 919132149155446097, guid: 6057a6559d81d4736acdd2fdc5e3a6d8, type: 3}
       propertyPath: m_Name
       value: stanford-bunny

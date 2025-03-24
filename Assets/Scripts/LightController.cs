@@ -10,7 +10,7 @@ public class LightController : MonoBehaviour
     {
         if (_lightDirection && _toonMaterial)
         {
-            _toonMaterial.SetVector("_LightDirection", _lightDirection.transform.forward);
+            _toonMaterial.SetVector("_Direction", _lightDirection.transform.forward);
         }
     }
 }
