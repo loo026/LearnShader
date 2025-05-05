@@ -1,4 +1,4 @@
-Shader "Custom/Normal"
+﻿Shader "Custom/Normal"
 {
     Properties
     {
@@ -7,6 +7,8 @@ Shader "Custom/Normal"
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
         _NormalMap ("Normal Map", 2D)= "bump"{}
+        _NoiseMap ("Noise Map", 2D) = "white" {}
+        _Strength ("Strength" , Range(0,4)) = 1.0
     }
     SubShader
     {
@@ -23,15 +25,18 @@ Shader "Custom/Normal"
 
         sampler2D _MainTex;
         sampler2D _NormalMap;
+        sampler2D _NoiseMap;
 
         struct Input
         {
             float2 uv_MainTex;
             float2 uv_NormalMap;
+            float2 uv_NoiseMap;
         };
 
         half _Glossiness;
         half _Metallic;
+        float _Strength;
         fixed4 _Color;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -46,9 +51,16 @@ Shader "Custom/Normal"
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
 
-            o.Normal   = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
+            //normal = (2*color)-1 
+            //transform normal vector[0,1] to Tangent Space range [-1,1]
+            float3 n = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
+          
+            float noise = tex2D(_NoiseMap, IN.uv_NoiseMap).r;
+            float weight = noise * _Strength;
+            float3 finalNormal = normalize(lerp(float3(0,0,1), n, weight)); //(0,0,1) = plane
+
+            o.Normal   = finalNormal;
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
