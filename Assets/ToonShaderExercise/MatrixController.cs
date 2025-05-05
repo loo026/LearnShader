@@ -7,13 +7,8 @@ public class MatrixController : MonoBehaviour
 {
     public Material targetMaterial;
     private Matrix4x4 transformMatrix;
-    
-    void Update()
-    {
-        UpdateMatrix();
-    }
 
-    private void OnValidate()
+    void Update()
     {
         UpdateMatrix();
     }
