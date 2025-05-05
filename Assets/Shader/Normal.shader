@@ -58,7 +58,7 @@
           
             float noise = tex2D(_NoiseMap, IN.uv_NoiseMap).r;
             float weight = noise * _Strength;
-            float3 finalNormal = normalize(lerp(float3(0,0,1), n, weight)); //(0,0,1) = plane
+            float3 finalNormal = normalize(lerp(float3(0,0,1), n, weight)); //(0,0,1) = flat point normal
 
             o.Normal   = finalNormal;
             o.Metallic = _Metallic;
