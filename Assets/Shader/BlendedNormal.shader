@@ -8,6 +8,10 @@ Shader "Custom/BlendedNormalsWithNoise"
         _NoiseMap ("Noise Map", 2D) = "white" {}
         _NormalStrength ("Normal Strength", Float) = 1.0
         _Direction ("Direction", Vector) = (0.0, 1.0, 0.0)
+
+        _SpecColor ("Specular Color", Color) = (1,1,1,1)
+        _Shininess ("Shininess", Float) = 16
+
     }
 
     SubShader
@@ -27,6 +31,8 @@ Shader "Custom/BlendedNormalsWithNoise"
             sampler2D _NoiseMap;
             float _NormalStrength;
             float3 _Direction;
+            float4 _SpecColor;
+            float _Shininess;
 
             struct appdata
             {
@@ -84,7 +90,17 @@ Shader "Custom/BlendedNormalsWithNoise"
                 float3 lightDir = normalize(_Direction);
                 float ndotl = saturate(dot(worldNormal, lightDir));
 
-                return float4(baseColor * ndotl, 1.0);
+                float3 viewDir = normalize(_WorldSpaceCameraPos - mul(unity_ObjectToWorld, float4(0, 0, 0, 1)).xyz);
+                float3 reflectDir = reflect(-lightDir, worldNormal);
+                float spec = pow(saturate(dot(viewDir, reflectDir)), _Shininess);
+
+                float3 ambient = 0.1 * baseColor;
+                float3 diffuse = baseColor * ndotl;
+                float3 specular = _SpecColor.rgb * spec;
+                float3 finalColor = ambient + diffuse + specular;
+
+                return float4(finalColor, 1.0);
+                //return float4(baseColor * ndotl, 1.0);
             }
             ENDCG
         }
